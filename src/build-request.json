@@ -1,0 +1,279 @@
+{
+  "kind": "build_request",
+  "title": "Add people management system with person selector and individual expense views",
+  "projectName": "Daily Expense Tracker",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "text": "Create a backend data model to store and manage people with fields for id (unique identifier), name (Text), and createdAt (Int timestamp for creation date)",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-user-add-people"
+        ],
+        "quotes": [
+          "Add a option for adding people"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Person records are stored in stable storage using Map data structure",
+        "Each person has a unique identifier, name, and creation timestamp",
+        "Person data persists across canister upgrades"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Implement backend CRUD functions for people: createPerson(name: Text) returns Person, listPeople() returns all people sorted by name, updatePerson(id, name) updates person name, deletePerson(id) removes person and returns success status",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-user-add-people"
+        ],
+        "quotes": [
+          "Add a option for adding people"
+        ]
+      },
+      "acceptanceCriteria": [
+        "createPerson validates name is not empty and returns new person record",
+        "listPeople returns all people sorted alphabetically by name",
+        "updatePerson validates person exists and name is not empty",
+        "deletePerson removes person from storage and returns boolean success"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Create a People Management component with a list view showing all people and an add person form with name input field, using the same styling patterns as ExpenseForm and ExpenseList components",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-assistant-clarification",
+          "msg-user-build-1"
+        ],
+        "quotes": [
+          "People Management Interface: A dedicated section to add, edit, and remove people from your tracker"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Component displays list of all people sorted alphabetically",
+        "Inline form allows adding new people with name validation",
+        "Each person row includes edit and delete action buttons",
+        "Uses shadcn/ui components consistent with existing UI",
+        "Integrates React Query hooks for people CRUD operations"
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Add edit functionality to People Management component allowing inline editing of person names with save and cancel actions",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-assistant-clarification"
+        ],
+        "quotes": [
+          "add, edit, and remove people"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking edit icon switches person row to edit mode with text input",
+        "Save button updates person name and exits edit mode",
+        "Cancel button discards changes and exits edit mode",
+        "Validation prevents saving empty names"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Add delete functionality to People Management component with confirmation dialog before removing a person",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-assistant-clarification"
+        ],
+        "quotes": [
+          "add, edit, and remove people"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Delete button shows confirmation dialog with person's name",
+        "Confirming deletion removes person from backend and updates UI",
+        "Canceling dialog keeps person in list"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Update ExpenseForm component to replace the free-text person name input with a searchable dropdown selector populated from the managed people list, maintaining the current form layout and validation",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-assistant-clarification",
+          "msg-user-build-1"
+        ],
+        "quotes": [
+          "Enhanced Expense Entry: Updated form to select from your list of people"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Person field uses shadcn/ui Select or Combobox component",
+        "Dropdown displays all people sorted alphabetically",
+        "Selected person name is used when creating/editing expenses",
+        "Form validation ensures a person is selected before submission",
+        "Component fetches people list using React Query"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Add quick-add functionality to ExpenseForm person selector allowing users to create new people directly from the dropdown without leaving the expense entry form",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-assistant-clarification",
+          "msg-user-build-1"
+        ],
+        "quotes": [
+          "with option to add new people on-the-fly"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Person selector includes 'Add new person' option or button",
+        "Clicking add new shows inline input field for name entry",
+        "Saving new person immediately creates it in backend and selects it",
+        "New person appears in dropdown and is auto-selected in form"
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Implement backend query function getPersonExpenses(personId: Text, year: ?Nat, month: ?Nat) that returns all expenses for a specific person, optionally filtered by year and/or month, sorted by date descending",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-assistant-clarification",
+          "msg-user-build-1"
+        ],
+        "quotes": [
+          "Individual Person View: A detailed page for each person showing their complete expense history"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Function filters expenses by matching person id",
+        "Optional year parameter filters expenses to specified year",
+        "Optional month parameter filters expenses to specified month within year",
+        "Returns expenses sorted by date in descending order (newest first)",
+        "Returns empty array if person has no expenses"
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "text": "Create a PersonDetailView component that displays a specific person's complete expense history in a table format matching ExpenseList styling, showing all expense details (amount, description, date, category) sorted by date",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-assistant-clarification",
+          "msg-user-build-1"
+        ],
+        "quotes": [
+          "A detailed page for each person showing their complete expense history, total spending, and daily averages"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Component accepts person id as parameter",
+        "Displays person name as page header",
+        "Shows table of all person's expenses using same layout as ExpenseList",
+        "Expenses are sorted by date descending (newest first)",
+        "Includes edit and delete actions for each expense"
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "text": "Add summary statistics section to PersonDetailView showing total spending in ₹ and daily average calculated across all time for that person",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-assistant-clarification",
+          "msg-user-build-1"
+        ],
+        "quotes": [
+          "showing their complete expense history, total spending, and daily averages"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Summary section displays above expense table",
+        "Shows total amount spent by person formatted as Indian Rupees",
+        "Shows daily average calculated as total divided by number of unique days with expenses",
+        "Uses same styling and currency formatting as existing summary components"
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Add a People tab to the main App navigation alongside Expenses and Summary tabs, displaying the People Management component when selected",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-assistant-clarification"
+        ],
+        "quotes": [
+          "A dedicated section to add, edit, and remove people"
+        ]
+      },
+      "acceptanceCriteria": [
+        "New 'People' tab appears in main navigation tabs",
+        "Clicking People tab displays People Management component",
+        "Tab maintains same styling as existing Expenses and Summary tabs",
+        "Active tab state is managed correctly"
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "text": "Add clickable links from person names in ExpenseList and PersonBreakdown components that navigate to the PersonDetailView for that specific person",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-assistant-clarification",
+          "msg-user-build-1"
+        ],
+        "quotes": [
+          "A detailed page for each person"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Person names in ExpenseList are rendered as clickable links",
+        "Person names in PersonBreakdown table are rendered as clickable links",
+        "Clicking person name navigates to PersonDetailView for that person",
+        "Links use consistent styling with hover states"
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "text": "Create React Query hooks in useQueries.ts for people management: useCreatePerson, useListPeople, useUpdatePerson, useDeletePerson, and usePersonExpenses following the existing pattern for expense hooks",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-add-people"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All hooks use useActor to get backend actor instance",
+        "Mutation hooks (create, update, delete) invalidate relevant queries on success",
+        "Query hooks use appropriate cache keys and refetch strategies",
+        "Hooks follow same patterns as existing useExpenses hooks"
+      ]
+    }
+  ],
+  "constraints": [
+    "Maintain single-actor architecture in backend/main.mo",
+    "Do not modify immutable frontend paths: useInternetIdentity.ts, useInternetIdentity.tsx, useActor.ts, main.tsx, components/ui/*",
+    "Keep existing expense tracking functionality unchanged",
+    "Use existing OKLCH color system and styling patterns",
+    "Maintain Indian Rupee (₹) currency formatting throughout"
+  ],
+  "nonGoals": [
+    "Replacing the existing expense entry form or list view",
+    "Changing the backend storage architecture from Map to another structure",
+    "Adding bulk import/export functionality for people",
+    "Implementing person profile pictures or additional metadata",
+    "Creating multi-user or shared expense tracking features"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

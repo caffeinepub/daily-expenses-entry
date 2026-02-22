@@ -1,0 +1,175 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-22T07:29:13.545Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 13,
+    "implemented": 10,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Create a backend data model to store and manage people with fields for id (unique identifier), name (Text), and createdAt (Int timestamp for creation date)",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Implement backend CRUD functions for people: createPerson(name: Text) returns Person, listPeople() returns all people sorted by name, updatePerson(id, name) updates person name, deletePerson(id) removes person and returns success status",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-12",
+        "summary": "Create a People Management component with a list view showing all people and an add person form with name input field, using the same styling patterns as ExpenseForm and ExpenseList components",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/PeopleManagement.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/PeopleManagement.tsx"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Add edit functionality to People Management component allowing inline editing of person names with save and cancel actions",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/PeopleManagement.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/PeopleManagement.tsx"
+        ]
+      },
+      {
+        "id": "REQ-14",
+        "summary": "Add delete functionality to People Management component with confirmation dialog before removing a person",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/PeopleManagement.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/PeopleManagement.tsx"
+        ]
+      },
+      {
+        "id": "REQ-15",
+        "summary": "Update ExpenseForm component to replace the free-text person name input with a searchable dropdown selector populated from the managed people list, maintaining the current form layout and validation",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ExpenseForm.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ExpenseForm.tsx"
+        ]
+      },
+      {
+        "id": "REQ-16",
+        "summary": "Add quick-add functionality to ExpenseForm person selector allowing users to create new people directly from the dropdown without leaving the expense entry form",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ExpenseForm.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ExpenseForm.tsx"
+        ]
+      },
+      {
+        "id": "REQ-17",
+        "summary": "Implement backend query function getPersonExpenses(personId: Text, year: ?Nat, month: ?Nat) that returns all expenses for a specific person, optionally filtered by year and/or month, sorted by date descending",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-18",
+        "summary": "Create a PersonDetailView component that displays a specific person's complete expense history in a table format matching ExpenseList styling, showing all expense details (amount, description, date, category) sorted by date",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/PersonDetailView.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/PersonDetailView.tsx"
+        ]
+      },
+      {
+        "id": "REQ-19",
+        "summary": "Add summary statistics section to PersonDetailView showing total spending in ₹ and daily average calculated across all time for that person",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/PersonDetailView.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/PersonDetailView.tsx"
+        ]
+      },
+      {
+        "id": "REQ-20",
+        "summary": "Add a People tab to the main App navigation alongside Expenses and Summary tabs, displaying the People Management component when selected",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-21",
+        "summary": "Add clickable links from person names in ExpenseList and PersonBreakdown components that navigate to the PersonDetailView for that specific person",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ExpenseList.tsx",
+          "frontend/src/components/PersonBreakdown.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ExpenseList.tsx",
+          "frontend/src/components/PersonBreakdown.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-22",
+        "summary": "Create React Query hooks in useQueries.ts for people management: useCreatePerson, useListPeople, useUpdatePerson, useDeletePerson, and usePersonExpenses following the existing pattern for expense hooks",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useQueries.ts"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/ExpenseForm.tsx",
+    "frontend/src/components/ExpenseList.tsx",
+    "frontend/src/components/PeopleManagement.tsx",
+    "frontend/src/components/PersonBreakdown.tsx",
+    "frontend/src/components/PersonDetailView.tsx",
+    "frontend/src/components/SummaryView.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

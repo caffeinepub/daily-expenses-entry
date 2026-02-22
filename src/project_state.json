@@ -1,0 +1,246 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Daily expenses tracking website with Indian Rupee amounts, person-wise entries, expense categories, and month/year-wise summaries with daily averages",
+  "architectural_notes": [
+    "All amounts displayed in Indian Rupees (₹)",
+    "Daily average calculated as: Total expenses / Number of days in the period",
+    "Summaries show both combined totals and per-person breakdowns",
+    "People are managed separately and can be reused across expense entries",
+    "Expense entry form supports both selecting from existing people and adding new people inline"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-an-expense-entry-form-component-with-fields-for-person-name-amount-in-indian-rupees-description-date-picker-and-category-dropdown-food-transport-bills-entertainment-other",
+      "title": "Create an expense entry form component with fields for person name, amount in Indian Rupees (₹), description, date picker, and category dropdown (Food, Transport, Bills, Entertainment, Other)",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-list-view-component-that-displays-all-expense-entries-with-edit-and-delete-functionality-showing-person-name-amount-in-description-date-and-category",
+      "title": "Create a list view component that displays all expense entries with edit and delete functionality, showing person name, amount in ₹, description, date, and category",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-summary-view-component-that-displays-month-wise-and-year-wise-expense-summaries-with-total-expenses-in-and-daily-averages",
+      "title": "Create a summary view component that displays month-wise and year-wise expense summaries with total expenses in ₹ and daily averages",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-per-person-expense-breakdown-section-within-summary-views-showing-individual-totals-and-daily-averages-for-selected-month-or-year",
+      "title": "Add per-person expense breakdown section within summary views showing individual totals and daily averages for selected month or year",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-a-modern-clean-and-professional-visual-theme-with-a-color-palette-suitable-for-a-financial-tracking-application-consistent-typography-and-intuitive-layout-that-emphasizes-readability-of-monetary-values",
+      "title": "Design a modern, clean, and professional visual theme with a color palette suitable for a financial tracking application, consistent typography, and intuitive layout that emphasizes readability of monetary values",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-people-management-component-with-a-list-view-showing-all-people-and-an-add-person-form-with-name-input-field-using-the-same-styling-patterns-as-expenseform-and-expenselist-components",
+      "title": "Create a People Management component with a list view showing all people and an add person form with name input field, using the same styling patterns as ExpenseForm and ExpenseList components",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-edit-functionality-to-people-management-component-allowing-inline-editing-of-person-names-with-save-and-cancel-actions",
+      "title": "Add edit functionality to People Management component allowing inline editing of person names with save and cancel actions",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-delete-functionality-to-people-management-component-with-confirmation-dialog-before-removing-a-person",
+      "title": "Add delete functionality to People Management component with confirmation dialog before removing a person",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-expenseform-component-to-replace-the-free-text-person-name-input-with-a-searchable-dropdown-selector-populated-from-the-managed-people-list-maintaining-the-current-form-layout-and-validation",
+      "title": "Update ExpenseForm component to replace the free-text person name input with a searchable dropdown selector populated from the managed people list, maintaining the current form layout and validation",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-quick-add-functionality-to-expenseform-person-selector-allowing-users-to-create-new-people-directly-from-the-dropdown-without-leaving-the-expense-entry-form",
+      "title": "Add quick-add functionality to ExpenseForm person selector allowing users to create new people directly from the dropdown without leaving the expense entry form",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-persondetailview-component-that-displays-a-specific-person-s-complete-expense-history-in-a-table-format-matching-expenselist-styling-showing-all-expense-details-amount-description-date-category-sorted-by-date",
+      "title": "Create a PersonDetailView component that displays a specific person's complete expense history in a table format matching ExpenseList styling, showing all expense details (amount, description, date, category) sorted by date",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-summary-statistics-section-to-persondetailview-showing-total-spending-in-and-daily-average-calculated-across-all-time-for-that-person",
+      "title": "Add summary statistics section to PersonDetailView showing total spending in ₹ and daily average calculated across all time for that person",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-people-tab-to-the-main-app-navigation-alongside-expenses-and-summary-tabs-displaying-the-people-management-component-when-selected",
+      "title": "Add a People tab to the main App navigation alongside Expenses and Summary tabs, displaying the People Management component when selected",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-clickable-links-from-person-names-in-expenselist-and-personbreakdown-components-that-navigate-to-the-persondetailview-for-that-specific-person",
+      "title": "Add clickable links from person names in ExpenseList and PersonBreakdown components that navigate to the PersonDetailView for that specific person",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-react-query-hooks-in-usequeries-ts-for-people-management-usecreateperson-uselistpeople-useupdateperson-usedeleteperson-and-usepersonexpenses-following-the-existing-pattern-for-expense-hooks",
+      "title": "Create React Query hooks in useQueries.ts for people management: useCreatePerson, useListPeople, useUpdatePerson, useDeletePerson, and usePersonExpenses following the existing pattern for expense hooks",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Expense entry form with person name, amount (₹), description, date, and category",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "List view of all expense entries with editing and deletion capabilities",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Month and year-wise expense summaries showing total expenses and daily averages",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Per-person expense breakdowns in summaries",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Expense categories: Food, Transport, Bills, Entertainment, Other",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Create a backend data model for expense entries that stores person name (Text), amount in Indian Rupees (Nat), description (Text), date (Int timestamp), and category (Text variant with options: Food, Transport, Bills, Entertainment, Other)",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Implement backend functions to create, read, update, and delete expense entries with stable storage persistence",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Implement backend query functions to calculate month-wise and year-wise expense summaries including total expenses and daily average for each period",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Implement backend query function to calculate per-person expense breakdowns for any given time period (month or year)",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "People management interface to add, edit, and remove people",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Update expense entry form to select from list of managed people with option to add new people on-the-fly",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Individual person detail page showing complete expense history, total spending, and daily averages",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Create a backend data model to store and manage people with fields for id (unique identifier), name (Text), and createdAt (Int timestamp for creation date)",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Implement backend CRUD functions for people: createPerson(name: Text) returns Person, listPeople() returns all people sorted by name, updatePerson(id, name) updates person name, deletePerson(id) removes person and returns success status",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Implement backend query function getPersonExpenses(personId: Text, year: ?Nat, month: ?Nat) that returns all expenses for a specific person, optionally filtered by year and/or month, sorted by date descending",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Daily Expenses Entry",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

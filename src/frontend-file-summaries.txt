@@ -1,0 +1,14 @@
+{
+  "frontend/src/App.tsx": "Main application component with three-tab navigation (Expenses, People, Summary), view state management for person detail navigation without edit functionality.",
+  "frontend/src/main.tsx": "Application entry point with QueryClient, InternetIdentity, ThemeProvider, and Toaster providers wrapping the App component.",
+  "frontend/src/components/Layout.tsx": "Layout wrapper component providing consistent header with app title, main content area, and footer with attribution.",
+  "frontend/src/components/ExpenseForm.tsx": "Expense entry form with person selector dropdown, quick-add person functionality, amount/category/date fields for creating new expenses only (no edit mode).",
+  "frontend/src/components/ExpenseList.tsx": "Read-only table component displaying all expenses sorted by date with clickable person names linking to detail view, showing category badges and amounts in ₹.",
+  "frontend/src/components/SummaryView.tsx": "Summary view with tabs for monthly and yearly expense summaries calculated client-side, displaying total expenses and daily averages with year/month selectors and per-person breakdowns.",
+  "frontend/src/components/PersonBreakdown.tsx": "Per-person expense breakdown component showing individual totals and daily averages for selected time periods with clickable person names linking to detail view.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for backend operations including people management (list, create, update, delete), person-specific expense queries, and aggregated all-expenses query that fetches from all people.",
+  "frontend/src/index.css": "Global styles with OKLCH color system optimized for financial data display with professional blue/green palette and enhanced typography for monetary values.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom colors for financial UI, enhanced font families, and custom utilities for currency display.",
+  "frontend/src/components/PeopleManagement.tsx": "People management component with inline add form, sortable list of people, inline editing with save/cancel, and delete confirmation dialogs using shadcn/ui components.",
+  "frontend/src/components/PersonDetailView.tsx": "Individual person detail view showing expense history table, summary statistics (total, daily average, entries), with back navigation and no edit/delete functionality."
+}

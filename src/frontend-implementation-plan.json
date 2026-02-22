@@ -1,0 +1,189 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add people management system with person selector and individual expense views",
+  "requirements": [
+    {
+      "id": "REQ-12",
+      "summary": "Create People Management component with list view and add person form",
+      "acceptanceCriteria": [
+        "Component displays list of all people sorted alphabetically",
+        "Inline form allows adding new people with name validation",
+        "Each person row includes edit and delete action buttons",
+        "Uses shadcn/ui components consistent with existing UI",
+        "Integrates React Query hooks for people CRUD operations"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PeopleManagement.tsx",
+          "operation": "create",
+          "description": "Create People Management component that displays a list of all people fetched via useListPeople hook, sorted alphabetically by name. Include an inline form at the top with a text input for name and submit button to add new people using useCreatePerson hook. Each person row includes edit and delete action buttons. Use shadcn/ui Button, Input, and Table components matching the styling patterns from ExpenseForm and ExpenseList. Integrate validation to prevent empty names."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Add inline edit functionality to People Management component",
+      "acceptanceCriteria": [
+        "Clicking edit icon switches person row to edit mode with text input",
+        "Save button updates person name and exits edit mode",
+        "Cancel button discards changes and exits edit mode",
+        "Validation prevents saving empty names"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PeopleManagement.tsx",
+          "operation": "modify",
+          "description": "Add inline editing functionality where clicking an edit icon switches the person row to edit mode with a text input pre-filled with the current name. Add save and cancel buttons that appear in edit mode. The save button calls useUpdatePerson hook to update the name and exits edit mode. The cancel button discards changes and exits edit mode. Include validation to prevent saving empty names."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Add delete functionality with confirmation dialog",
+      "acceptanceCriteria": [
+        "Delete button shows confirmation dialog with person's name",
+        "Confirming deletion removes person from backend and updates UI",
+        "Canceling dialog keeps person in list"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PeopleManagement.tsx",
+          "operation": "modify",
+          "description": "Add delete functionality where clicking the delete button shows a confirmation dialog (using shadcn/ui AlertDialog) displaying the person's name. Confirming the deletion calls useDeletePerson hook to remove the person from backend and automatically updates the UI via query invalidation. Canceling the dialog keeps the person in the list."
+        }
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "summary": "Update ExpenseForm to use person selector dropdown instead of free-text input",
+      "acceptanceCriteria": [
+        "Person field uses shadcn/ui Select or Combobox component",
+        "Dropdown displays all people sorted alphabetically",
+        "Selected person name is used when creating/editing expenses",
+        "Form validation ensures a person is selected before submission",
+        "Component fetches people list using React Query"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ExpenseForm.tsx",
+          "operation": "modify",
+          "description": "Replace the free-text person name input with a searchable dropdown selector using shadcn/ui Select or Combobox component. Populate the dropdown with people fetched from useListPeople hook, sorted alphabetically by name. Update the form to store and submit the selected person's id (personId) instead of a free-text name. Maintain the current form layout and add validation to ensure a person is selected before submission. Update form field registration to work with personId instead of person name text."
+        }
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "summary": "Add quick-add functionality to person selector in ExpenseForm",
+      "acceptanceCriteria": [
+        "Person selector includes 'Add new person' option or button",
+        "Clicking add new shows inline input field for name entry",
+        "Saving new person immediately creates it in backend and selects it",
+        "New person appears in dropdown and is auto-selected in form"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ExpenseForm.tsx",
+          "operation": "modify",
+          "description": "Add quick-add functionality to the person selector by including an 'Add new person' option at the top or bottom of the dropdown. When clicked, show an inline input field within or adjacent to the selector for entering a new person's name. Add a save button that calls useCreatePerson hook to immediately create the person in the backend. Once created, automatically select the new person in the form and refresh the dropdown list to include them. Ensure the new person is auto-selected in the personId field."
+        }
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "summary": "Create PersonDetailView component showing individual person's expense history",
+      "acceptanceCriteria": [
+        "Component accepts person id as parameter",
+        "Displays person name as page header",
+        "Shows table of all person's expenses using same layout as ExpenseList",
+        "Expenses are sorted by date descending (newest first)",
+        "Includes edit and delete actions for each expense"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PersonDetailView.tsx",
+          "operation": "create",
+          "description": "Create PersonDetailView component that accepts a person id as parameter (via props or URL route param). Fetch the person's details using useListPeople hook (filter by id) and their expenses using usePersonExpenses hook with the person id. Display the person's name as the page header. Show a table of all the person's expenses using the same layout and styling as ExpenseList component, with columns for date, description, amount (formatted in ₹), and category. Sort expenses by date descending (newest first). Include edit and delete action buttons for each expense row that trigger the same edit/delete flows as in ExpenseList."
+        }
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "summary": "Add summary statistics section to PersonDetailView",
+      "acceptanceCriteria": [
+        "Summary section displays above expense table",
+        "Shows total amount spent by person formatted as Indian Rupees",
+        "Shows daily average calculated as total divided by number of unique days with expenses",
+        "Uses same styling and currency formatting as existing summary components"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PersonDetailView.tsx",
+          "operation": "modify",
+          "description": "Add a summary statistics section above the expense table that displays total spending and daily average for the person. Calculate total spending by summing all expense amounts and format as Indian Rupees (₹) using the same currency formatting pattern from ExpenseList and PersonBreakdown. Calculate daily average by dividing the total by the number of unique days with expenses. Use the same styling patterns as existing summary components (SummaryView, PersonBreakdown) with consistent spacing and typography."
+        }
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "summary": "Add People tab to main App navigation",
+      "acceptanceCriteria": [
+        "New 'People' tab appears in main navigation tabs",
+        "Clicking People tab displays People Management component",
+        "Tab maintains same styling as existing Expenses and Summary tabs",
+        "Active tab state is managed correctly"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add a new 'People' tab to the main navigation tabs alongside 'Expenses' and 'Summary'. Import and render the PeopleManagement component when the People tab is selected. Maintain the same styling and interaction patterns as the existing tabs (using shadcn/ui Tabs components). Ensure the active tab state is managed correctly and the tab shows the active state when selected."
+        }
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "summary": "Add clickable person name links to ExpenseList and PersonBreakdown",
+      "acceptanceCriteria": [
+        "Person names in ExpenseList are rendered as clickable links",
+        "Person names in PersonBreakdown table are rendered as clickable links",
+        "Clicking person name navigates to PersonDetailView for that person",
+        "Links use consistent styling with hover states"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ExpenseList.tsx",
+          "operation": "modify",
+          "description": "Modify the person name display in ExpenseList to render as clickable links. When clicked, navigate to PersonDetailView with the person's id as a parameter. Use consistent link styling with hover states matching the app's design system. Ensure the person id is available in the expense data for navigation."
+        },
+        {
+          "path": "frontend/src/components/PersonBreakdown.tsx",
+          "operation": "modify",
+          "description": "Modify the person name column in PersonBreakdown table to render as clickable links. When clicked, navigate to PersonDetailView with the person's id as a parameter. Use consistent link styling with hover states matching the app's design system. Ensure the person id is available in the breakdown data for navigation."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add routing support to enable navigation to PersonDetailView. This may involve adding a route handler or state management to switch between the main tab views and the PersonDetailView when a person link is clicked. Ensure back navigation returns to the previous tab view."
+        }
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "summary": "Create React Query hooks for people management operations",
+      "acceptanceCriteria": [
+        "All hooks use useActor to get backend actor instance",
+        "Mutation hooks (create, update, delete) invalidate relevant queries on success",
+        "Query hooks use appropriate cache keys and refetch strategies",
+        "Hooks follow same patterns as existing useExpenses hooks"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add React Query hooks for people management following the existing pattern for expense hooks. Create useListPeople query hook that fetches all people using the backend's listPeople method. Create useCreatePerson mutation hook that creates a new person and invalidates the people list query on success. Create useUpdatePerson mutation hook that updates a person's name and invalidates the people list query on success. Create useDeletePerson mutation hook that deletes a person and invalidates the people list query on success. Create usePersonExpenses query hook that fetches expenses for a specific person with optional year and month filters using the backend's getPersonExpenses method. All hooks must use useActor to get the backend actor instance and follow the same patterns as existing expense hooks with appropriate cache keys and refetch strategies."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "backend/main.mo": "Main Motoko actor implementing person and expense management with CRUD operations for people, expense creation, and filtered queries by person/date with timestamp-based date range calculations.",
+  "backend/migration.mo": "Migration module that transforms old expense schema (with 'person' field) to new schema (with 'personId' field) while initializing empty people map and preserving expense IDs.",
+  "feature_evidence.json": "Feature evidence report documenting implemented features including people management UI, person selector in expense form, quick-add functionality, and person detail views with associated test IDs and confidence levels.",
+  "frontend-file-summaries.txt": "JSON-formatted summaries of all frontend TypeScript/React components describing their functionality, including forms, lists, views, hooks, and styling configurations.",
+  "frontend/index.css": "Tailwind CSS configuration with custom OKLCH color system defining light and dark theme variables for UI components including sidebar, charts, and financial data display.",
+  "frontend/index.html": "HTML entry point with root div and module script reference to main.tsx for the Daily Expenses Entry application.",
+  "frontend/src/App.tsx": "Root React component managing three-tab navigation (Expenses, People, Summary) and view state for switching between main tabs and person detail view with navigation handlers.",
+  "frontend/src/components/ExpenseForm.tsx": "Expense creation form with person dropdown selector, quick-add person functionality, amount/description/category/date inputs using react-hook-form and shadcn/ui components with validation and toast notifications.",
+  "frontend/src/components/ExpenseList.tsx": "Displays a table of all expenses with date, person, category, description, and amount columns. Supports optional person click handler and shows loading/empty states.",
+  "frontend/src/components/Layout.tsx": "Provides the main application layout with header showing app title and rupee symbol, main content area, and footer with caffeine.ai attribution link.",
+  "frontend/src/components/PeopleManagement.tsx": "Manages people entities with add, edit, and delete functionality displayed in a table. Includes form validation and toast notifications for user feedback.",
+  "frontend/src/components/PersonBreakdown.tsx": "Shows per-person expense breakdown for a given year or month, calculating total expenses, daily averages, and expense counts. Supports optional person click handler.",
+  "frontend/src/components/PersonDetailView.tsx": "Displays detailed expense history for a specific person with summary statistics (total, daily average, unique days) and a table of all their expenses with categories.",
+  "frontend/src/components/SummaryView.tsx": "Provides tabbed monthly and yearly expense summaries with year/month selectors, showing total expenses and daily averages. Integrates PersonBreakdown component for detailed breakdowns.",
+  "frontend/src/hooks/useActor.ts": "Custom React hook that manages the backend actor instance using React Query, creating authenticated or anonymous actors based on Internet Identity state and invalidating dependent queries when the actor changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides Internet Identity authentication context and hooks for managing user login/logout state, creating AuthClient with configurable options, and handling identity persistence across page reloads.",
+  "frontend/src/hooks/useQueries.ts": "Defines React Query hooks for CRUD operations on people and expenses, including listing people, creating/updating/deleting people, fetching person-specific and all expenses with optional year/month filters, and creating expenses.",
+  "frontend/src/index.css": "Tailwind CSS configuration with custom CSS variables for light/dark theme colors using OKLCH color space, plus utility classes for currency display formatting.",
+  "frontend/src/main.tsx": "Application entry point that sets up React root with QueryClientProvider for React Query and InternetIdentityProvider for authentication context wrapping the main App component.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending the default theme with custom colors using OKLCH, typography settings, financial-themed shadows, accordion animations, and plugins for typography, container queries, and animations.",
+  "project_state.json": "Project metadata documenting a daily expenses tracking application with Indian Rupee support, listing implemented features including expense entry forms, list views, summaries with daily averages, people management, and professional financial UI design."
+}
